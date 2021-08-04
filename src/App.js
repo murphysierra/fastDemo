@@ -1,24 +1,33 @@
-import logo from './logo.svg';
 import './App.css';
+import { useEffect, useState } from 'react';
+import getMovieResults from "./Fetch";
+import { MovieList } from './MovieList';
 
 function App() {
+  const [movieResults, setMovieResults] = useState([]);
+  const [searchInput, setSearchInput] = useState("");
+
+  useEffect(() => {
+    if (searchInput !== "") {
+      getMovieResults(searchInput)
+      .then((response) => {
+        if (response && response.Search) {
+          setMovieResults(response.Search); // need to deduplicate results
+        }
+        console.log("response: ", response);
+      });
+    }
+  }, [searchInput]);
+
+
+  // console.log("list: ", movieList);
+  console.log("search: ", searchInput);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <header className="App-header"></header>
+      <input type="text" value={searchInput} onChange={(event) => setSearchInput(event.target.value)}></input>
+      <MovieList movies={movieResults} />
+     </div>
   );
 }
 
