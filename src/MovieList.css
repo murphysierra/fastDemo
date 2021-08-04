@@ -1,0 +1,36 @@
+.movie-list-container ul {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	list-style: none;
+	font-size: x-large;
+}
+
+.movie-list-container li {
+	height: 150px;
+	width: 150px;
+	background-color: lightblue;
+	color: darkslategrey;
+	font-weight: 500;
+	margin: 10px;
+	padding: 25px;
+	border-radius: 10px;
+	overflow: auto;
+	text-overflow: ellipsis;
+
+	display: flex;
+    	flex-direction: column;
+    	justify-content: center;
+}
+
+@keyframes fade-in {
+	from {opacity: 0;}
+	to {opacity: 1;}
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  li {
+	animation-name: fade-in;
+	animation-duration: 2s;
+  }
+}
