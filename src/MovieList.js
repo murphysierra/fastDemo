@@ -33,7 +33,7 @@ export function MovieCard(props) {
 	const { Title, imdbID, Year } = props.movie;
 	const [active, setActive] = useState(true);
 	return (
-		<li className='movie-card' key={imdbID}>
+		<li className='movie-card' key={imdbID + Year}>
 			<div className='movie-info'>
 				<h2 className='movie-title'>{Title}</h2>
 				<h3 className='movie-year'>{Year}</h3>
@@ -46,7 +46,7 @@ export function MovieCard(props) {
 					setActive(false);
 				}}
 			>
-				Add To Playlist
+				{active ? 'Add To Playlist' : 'In Your Playlist'}
 			</button>
 		</li>
 	)

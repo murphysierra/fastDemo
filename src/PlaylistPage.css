@@ -1,0 +1,23 @@
+.playlist {
+	background-color: lightblue;
+	height: 100%;
+}
+
+h1 {
+	padding-bottom: 10px;
+}
+
+ul {
+	text-align: initial;
+}
+
+li {
+	padding: 2px;
+}
+
+footer {
+	position: fixed;
+	bottom: 0;
+	padding: 10px;
+	font-weight: bold;
+}
