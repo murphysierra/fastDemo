@@ -1,11 +1,12 @@
 import './App.css';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import getMovieResults from "./Fetch";
 import { MovieList } from './MovieList';
 
 function App() {
   const [movieResults, setMovieResults] = useState([]);
   const [searchInput, setSearchInput] = useState("");
+  const [playlist, setPlaylist] = useState([]);
 
   useEffect(() => {
     if (searchInput !== "") {
@@ -14,19 +15,24 @@ function App() {
         if (response && response.Search) {
           setMovieResults(response.Search); // need to deduplicate results
         }
+        // Handle results that don't fail, but return "no results" or "too many results"
+        else if (response.Response === "False") {
+          setMovieResults([]);
+        }
         console.log("response: ", response);
       });
     }
   }, [searchInput]);
 
+  const addMovieToPlaylist = useCallback((movie) => {
+    setPlaylist([...playlist, movie]);
+  }, [playlist, setPlaylist]);
 
-  // console.log("list: ", movieList);
-  console.log("search: ", searchInput);
   return (
     <div className="App">
       <header className="App-header"></header>
       <input type="text" value={searchInput} onChange={(event) => setSearchInput(event.target.value)}></input>
-      <MovieList movies={movieResults} />
+      <MovieList addMovieFunction={addMovieToPlaylist} movieList={movieResults} />
      </div>
   );
 }
