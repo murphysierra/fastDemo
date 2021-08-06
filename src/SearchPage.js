@@ -17,7 +17,7 @@ export function SearchPage(props) {
 						setMovieResults(response.Search); // need to deduplicate results
 					}
 					// Handle results that don't fail, but return 'no results' or 'too many results'
-					else if (response.Response === 'False') {
+					else if (response && response.Response === 'False') {
 						setMovieResults([]);
 					}
 					console.log('response: ', response);
