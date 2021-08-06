@@ -1,7 +1,7 @@
 import './App.css';
 import { useEffect, useState } from 'react';
 import getMovieResults from './Fetch';
-import { MovieList } from './MovieList';
+import MovieList from './MovieList';
 
 export function SearchPage(props) {
 	const { addMovieToPlaylist } = props;

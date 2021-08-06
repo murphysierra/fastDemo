@@ -16,7 +16,7 @@ html, body {
 .search-bar {
   background-color: lightblue;
   min-height: 125px;
-  padding-bottom: 10px;
+  padding-block-end: 10px;
 }
 
 h1 {
