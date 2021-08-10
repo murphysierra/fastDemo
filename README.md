@@ -1,5 +1,7 @@
 # Sierra's Fast Programming Assignment
 
+The deployed version of the app can be accessed here: https://murphysierra.github.io/fastDemo/
+
 Hello there!  Thanks for giving me the opportunity to apply to Fast.  Here are the answers to your questions:
 
 1. What were the most difficult tasks?
