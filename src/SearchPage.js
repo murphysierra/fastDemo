@@ -20,7 +20,6 @@ export function SearchPage(props) {
 					else if (response && response.Response === 'False') {
 						setMovieResults([]);
 					}
-					console.log('response: ', response);
 				});
 		} else if (searchInput === '' && yearInput === '') setMovieResults([]);
 	}, [searchInput, yearInput]);
